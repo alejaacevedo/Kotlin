@@ -6,8 +6,12 @@ fun main(args: Array<String>) {
     println(reverseList(testList))
     println(reverseListAgain(testList))
     println(testList.reversed())
+    1 shl 2 // demonstration of use of an infix call is equal to 1.shl(2)
 
 }
+
+
+infix fun Int.shl(x:Int): Int { return x + 2}
 
 fun reverseList(sampleList: List<Int>): List<Int> {
     val reverseList = mutableListOf<Int>()

@@ -4,10 +4,16 @@ data class Fish(var name: String)
 
 fun fishExamples() {
     val fish = Fish("splashy")
+
+    // Without inlining the function
     myWith(fish.name) {
         // High order functions
         println(capitalize())
     }
+
+    // with inline function
+    fish.name.capitalize()
+
     // returns execution for a lamda
     fish.run { name }
 
@@ -26,11 +32,18 @@ fun fishExamples() {
 }
 
 // Defining my own High order function
-fun myWith(name: String, block: String.() -> Unit) {
+inline fun myWith(name: String, block: String.() -> Unit) {
     name.block()
 }
 
+fun runExample(){
+
+    JavaRun.runNow {println("Passing a lambda as a runnable")}
+}
+
+//Class.singleAbstractMethod { lambda_of_override }
 
 fun main(args: Array<String>) {
     fishExamples()
+    runExample()
 }
